@@ -38,7 +38,7 @@ Similar Movies:
 
 3.) Let's say you use your similarity function as a way to recommend movies. How would you evaluate the performance of your system? Write a paragraph or so explaining your performance metric and test methodology. 
 
-For an app in production, I would have a feedback mechanism from the users. Once a user tells our app that they enjoyed a movie, the app will recommend other movies that they might like based on other users who enjoyed the movie they just watched. If the user then clicks on a recommended movie and rates it positively, that would be a positive evaluation. If they left a negative rating or maybe even didn't rate the recommend movie, that would be a negative evaluation. For an advanced movie recommending agent, I could even implement a reinforcement learning model that rewarded our recommender system for positive evaluations and penalized the agent for negative evaluations.
+For an app in production, I would have a feedback mechanism from the users. Once a user tells our app that they enjoyed a movie, the app will recommend other movies that they might like based on other users who enjoyed the movie they just watched. If the user then clicks on a recommended movie and rates it positively, that would be a positive evaluation. If they left a negative rating or maybe even didn't rate the recommend movie, that would be a negative evaluation of the app. For an advanced movie recommending agent, I could even implement a reinforcement learning model that rewarded our recommender system for positive evaluations and penalized the agent for negative evaluations.
 
 ## Install:
 pip install ./dependencies.txt
