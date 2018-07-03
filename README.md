@@ -13,9 +13,9 @@ For the final output, my program prints out the top rated movies but also includ
 
 Usage: python3 recommender.py <movie id>
 
-I believe that the most important metrics of movie similarity is 1.) User's who liked movie A also rated movie B with around the same score, 2.) Movie A and Movie B contain the same genres and 3.) Popularity, around the same number of people watched both Movie A and Movie B. For this problem, I created a python module (recommender.py) that takes movies with the same genre and outputs the top 5 movies with the best normalized-weighted-euclidean similarity.
+I believe that the most important metrics of movie similarity is 1.) User's who liked movie A also rated movie B with around the same score, 2.) Movie A and Movie B contain the same genres and 3.) Popularity, around the same number of people watched and rated both Movie A and Movie B. For this problem, I created a python module (recommender.py) that takes movies with the same genre and outputs the top 5 movies that have the best normalized-weighted-euclidean similarity.
 
-Input Movie:
+Input Movie (movieId: 1, Avg Rating: 3.87):
 
 
 <img src="https://github.com/julianweisbord/AppSheetChallenge/blob/master/imgs/toy_story.jpg" width="125" height="150"/>
