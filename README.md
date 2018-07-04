@@ -41,4 +41,4 @@ Similar Movies:
 For an app in production, I would have a feedback mechanism from the users. Once a user tells our app that they enjoyed a movie, the app will recommend other movies that they might like based on other users who enjoyed the movie they just watched. If the user then clicks on a recommended movie and rates it positively, that would be a positive evaluation. If they left a negative rating or maybe even didn't rate the recommend movie, that would be a negative evaluation of the app. For an advanced movie recommending agent, I could even implement a reinforcement learning model that rewarded our recommender system for positive evaluations and penalized the agent for negative evaluations.
 
 ## Install:
-pip install ./dependencies.txt
+pip install -r ./dependencies.txt
