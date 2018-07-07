@@ -3,7 +3,7 @@ Created on July 1st, 2018
 author: Julian Weisbord
 description: Determine the n highest rated movies for each genre in the MovieLens data set.
 '''
-
+import time
 import pandas as pd
 from collections import defaultdict
 from operator import itemgetter
@@ -29,19 +29,23 @@ def top_n(n_highest):
         genres.remove('IMAX')
 
     # Create a dictionary of average rating values of all movies that contain that genre in their list of genres.
+        # Only choose movies that have received greater/equal to 4.25/5 recommendation for consideration.
+    best_movies = set(ratings_tbl[ratings_tbl['rating'] >= 4.25]['movieId'])
+    best_movies_tbl = movies_tbl.loc[movies_tbl['movieId'].isin(best_movies)]
+    best_movies_tbl = best_movies_tbl.reset_index(drop=True)
+
     avg_movie_ratings = defaultdict(list)  # Type: {genre: [(movieId, num_movie_ratings, avg_rating)]}
 
     for genre in genres:
-        for idx, movieId in enumerate(movies_tbl['movieId']):
-            genre_str = movies_tbl[movies_tbl['movieId'] == movieId]['genres'][idx]
+        for idx, movieId in enumerate(best_movies_tbl['movieId']):
+            genre_str = best_movies_tbl[best_movies_tbl['movieId'] == movieId]['genres'][idx]
             if genre in genre_str:
 
                 movie_ratings = 0
                 num_movie_ratings = len(ratings_tbl[ratings_tbl['movieId'] == movieId]['rating'])
                 if num_movie_ratings == 0:
                     continue  # No ratings for this movie so move to next movie
-                for rating in ratings_tbl[ratings_tbl['movieId'] == movieId]['rating']:
-                    movie_ratings += rating
+                movie_ratings = ratings_tbl[ratings_tbl['movieId'] == movieId]['rating'].sum()
                 avg_rating = movie_ratings / num_movie_ratings
                 avg_movie_ratings[genre].append((movieId, num_movie_ratings, avg_rating))
             else:
@@ -70,7 +74,10 @@ def tie_breaker(genre, avg_movie_ratings):
     print(top_n_tup)
 
 def main():
+    start_time = time.time()
     top_n(N_HIGHEST)
+    end_time = time.time() - start_time
+    print("Took {} seconds".format(end_time))
 
 if __name__ == '__main__':
     main()
